@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Carta Personal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .carta {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .encabezado {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .fecha {
+            color: #888;
+            font-style: italic;
+        }
+        
+        .contenido {
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 30px;
+        }
+        
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .imagen-container {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .imagen-container:hover {
+            transform: scale(1.05);
+        }
+        
+        .imagen-container img {
+            width: 90%;
+            height: 90%;
+            object-fit: cover;
+        }
+
+        .video-container {
+            width: 80%;
+            max-width: 700px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .cerrar {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .firma {
+            text-align: right;
+            font-style: italic;
+            margin-top: 40px;
+        }
+        
+        .btn-agregar {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 20px auto;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-agregar:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="carta">
+        <div class="encabezado">
+            <h1>FOTOS DE PAOLA Y LUIS</h1>
+            <p class="fecha" id="fecha-actual"></p>
+        </div>
+        
+        <div class="contenido">
+            <p>PAOLA,</p>
+            <p>ESPERO Y TE GUSTE NUSTRAS FOTOS TE QUIERO MUCHOOOOOOOOOOOO ESRES LA PERSONA QUE ME MOTIVA PARA HACER ESTOS TIPPOS DE COSAS </p>
+            <p>ESPERO QUE ME AMES AI COMO YO TE AMO Y GRASIS POR SER PARTE DE MI VIDA TE AMOOOOOOO</p>
+        </div>
+        
+        <h3>NUSTRAS IMAGENES Y VIDEOS</h3>
+        <div class="galeria" id="galeria">
+            <!-- Aquí se añadirán las imágenes mediante JavaScript -->
+            <div class="imagen-container">
+                <img src="imagenes.com/IMG-20250116-WA0001.jpg" alt="Imagen 1">
+            </div>
+            <div class="imagen-container">
+                <img src="imagenes.com/IMG-20250118-WA0004.jpg" alt="Imagen 2">
+            </div>
+            <div class="imagen-container">
+                <img src="imagenes.com/IMG-20250118-WA0005.jpg" alt="Imagen 3">
+            </div>
+            <div class="imagen-container">
+                <img src="imagenes.com/IMG-20250118-WA0006.jpg" alt="Imagen 4">
+            </div>
+            <div class="imagen-container">
+                <img src="imagenes.com/IMG-20250216-WA0000.jpg" alt="Imagen 5">
+            </div>
+        </div>
+
+        <h3>Mis Videos</h3>
+        <div class="video-container">
+            <video controls>
+                <source src="imagenes.com/VID-20250125-WA0002.mp4" type="video/mp4">
+                Tu navegador no soporta el formato de video.
+            </video>
+        </div>
+        <div class="video-container">
+            <video controls>
+                <source src="imagenes.com/VID-20250217-WA0020.mp4" type="video/ogg">
+                Tu navegador no soporta el formato de video.
+            </video>
+        </div>
+
+        <button class="btn-agregar" id="btn-agregar">Agregar Nueva Imagen</button>
+        
+        <div class="firma">
+            <p>Con cariño,</p>
+            <p>LUIS</p>
+        </div>
+    </div>
+    
+    <div id="modal" class="modal">
+        <span class="cerrar">&times;</span>
+        <div class="modal-content">
+            <img id="img-ampliada" src="" alt="Imagen ampliada">
+        </div>
+    </div>
+    
+    <script>
+        // Establecer la fecha actual
+        const fechaActual = new Date();
+        const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('fecha-actual').innerText = fechaActual.toLocaleDateString('es-ES', opciones);
+        
+        // Evento para abrir la imagen en modal
+        const imagenes = document.querySelectorAll('.imagen-container img');
+        const modal = document.getElementById('modal');
+        const imgAmpliada = document.getElementById('img-ampliada');
+        
+        imagenes.forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = 'flex';
+                imgAmpliada.src = this.src;
+            });
+        });
+        
+        // Cerrar el modal
+        document.querySelector('.cerrar').addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        // Cerrar el modal al hacer clic fuera de la imagen
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Función para agregar una nueva imagen
+        document.getElementById('btn-agregar').addEventListener('click', function() {
+            const galeria = document.getElementById('galeria');
+            
+            const nuevoContainer = document.createElement('div');
+            nuevoContainer.className = 'imagen-container';
+            
+            const nuevaImagen = document.createElement('img');
+            nuevaImagen.src = `https://via.placeholder.com/200?text=Nueva`;
+            nuevaImagen.alt = 'Nueva imagen';
+            
+            // Agregar el evento de clic a la nueva imagen
+            nuevaImagen.addEventListener('click', function() {
+                modal.style.display = 'flex';
+                imgAmpliada.src = this.src;
+            });
+            
+            nuevoContainer.appendChild(nuevaImagen);
+            galeria.appendChild(nuevoContainer);
+        });
+    </script>
+</body>
+</html>
